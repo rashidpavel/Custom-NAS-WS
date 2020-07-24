@@ -8,6 +8,8 @@ wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multim
 apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 3766223989993A70
 apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys E58A9D36647CAE7F
 
+wget https://gandalfn.ovh/debian/pool/main/p/pantheon-debian-repos/pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
+dpkg -i pantheon-debian-repos_5.0-0+pantheon+buster+juno1_all.deb &&
 
 
 ### Install openmediavault ####
@@ -20,13 +22,13 @@ export DEBIAN_FRONTEND=noninteractive &&
 export APT_LISTCHANGES_FRONTEND=none &&
 wget -O "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" https://packages.openmediavault.org/public/archive.key &&
 apt-key add "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" &&
-apt-get update &&
+apt-get update && apt-get -y dist-upgrade &&
 apt-get --yes --auto-remove --show-upgraded \
     --allow-downgrades --allow-change-held-packages \
     --no-install-recommends \
     --option Dpkg::Options::="--force-confdef" \
     --option DPkg::Options::="--force-confold" \
-    install openmediavault-keyring openmediavault &&
+    install openmediavault-keyring openmediavault && apt -y install pantheon pantheon-shell tasksel task-desktop gdm3 gcc make build-essential
 
 
 # Populate the database.
@@ -34,5 +36,7 @@ omv-confdbadm populate &&
 
 wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && 
 bash install.sh aapanel &&
+
+
 
 
