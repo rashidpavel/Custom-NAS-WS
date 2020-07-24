@@ -1,5 +1,14 @@
 
+apt update && apt -y install gnupg curl wget apt-transport-https dirmngr &&
 rm -rf /etc/apt/sources.list && 
+wget https://raw.githubusercontent.com/rashidpavel/Custom-NAS-WS/master/sources.list && mv sources.list /etc/apt/
+
+curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -
+wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb && dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
+apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 3766223989993A70
+apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys E58A9D36647CAE7F
+
+
 
 ### Install openmediavault ####
 cat <<EOF >> /etc/apt/sources.list.d/openmediavault.list
