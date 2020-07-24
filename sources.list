@@ -1,0 +1,32 @@
+#------------------------------------------------------------------------------#
+#                   OFFICIAL DEBIAN REPOS                    
+#------------------------------------------------------------------------------#
+
+###### Debian Main Repos
+deb http://deb.debian.org/debian/ stable main contrib non-free
+
+deb http://deb.debian.org/debian/ stable-updates main contrib non-free
+
+deb http://deb.debian.org/debian-security stable/updates main
+
+deb http://ftp.debian.org/debian buster-backports main
+
+#------------------------------------------------------------------------------#
+#                      UNOFFICIAL  REPOS                       
+#------------------------------------------------------------------------------#
+
+###### 3rd Party Binary Repos
+###Atom Editor
+deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
+
+###Debian Multimedia
+deb [arch=amd64,i386] https://www.deb-multimedia.org buster main non-free
+
+###Paper GTK Theme
+deb http://ppa.launchpad.net/snwh/pulp/ubuntu bionic main
+deb-src http://ppa.launchpad.net/snwh/pulp/ubuntu yakkety main
+
+###Papirus GTK Theme
+deb http://ppa.launchpad.net/papirus/papirus/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/papirus/papirus/ubuntu bionic main 
+
