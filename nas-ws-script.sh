@@ -1,7 +1,11 @@
 
-apt update && apt -y install gnupg curl wget apt-transport-https dirmngr &&
-rm -rf /etc/apt/sources.list && 
-wget https://raw.githubusercontent.com/rashidpavel/Custom-NAS-WS/master/sources.list && mv sources.list /etc/apt/
+adduser sysadmin --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "sysadmin:omvadmin" |  chpasswd &&
+
+
+apt update && apt -y install lsb-release gnupg curl wget apt-transport-https dirmngr &&
+
+echo "deb http://ftp.debian.org/debian buster-backports main" >> /etc/apt/sources.list &&
 
 curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -
 wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb && dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
@@ -30,14 +34,11 @@ apt-get --yes --auto-remove --show-upgraded \
     --option DPkg::Options::="--force-confold" \
     install openmediavault-keyring openmediavault && 
     
-apt -y dist-upgrade && apt -y install pantheon pantheon-shell tasksel task-desktop gdm3 gcc make build-essential &&
+apt update && apt -y dist-upgrade && apt -y install pantheon pantheon-shell tasksel task-desktop gdm3 gcc make build-essential &&
 
 
 # Populate the database.
 omv-confdbadm populate &&
-
-wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && 
-bash install.sh aapanel &&
 
 reboot
 
